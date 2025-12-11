@@ -13,7 +13,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-white">
+    <section className="relative overflow-hidden bg-slate-50">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -57,32 +57,36 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16 md:py-24 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          {/* Floating Trust Badges - Responsive grid */}
+          {/* Floating Trust Badges - One line on mobile */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6 md:mb-8"
+            className="flex flex-row flex-wrap sm:grid sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 justify-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12"
           >
-            <span className="glass px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-blue-700 flex items-center gap-2">
-              <Award className="w-3 h-3 sm:w-4 sm:h-4 text-red-600" />
-              UCL Hosted
-            </span>
-            <span className="glass px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-blue-700 flex items-center gap-2">
-              <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-red-600" />
-              50+ Nations
-            </span>
-            <span className="glass px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-blue-700 flex items-center gap-2">
-              <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 text-red-600" />
-              99% Recommended
-            </span>
+            <div className="glass px-2 sm:px-3 py-2 sm:py-3 rounded-lg text-[10px] sm:text-xs md:text-sm font-medium text-blue-700 flex flex-row sm:flex-col items-center gap-1 sm:gap-1 flex-shrink-0">
+              <Award className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0" />
+              <span className="whitespace-nowrap">UCL Hosted</span>
+            </div>
+            <div className="glass px-2 sm:px-3 py-2 sm:py-3 rounded-lg text-[10px] sm:text-xs md:text-sm font-medium text-blue-700 flex flex-row sm:flex-col items-center gap-1 sm:gap-1 flex-shrink-0">
+              <Globe className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0" />
+              <span className="whitespace-nowrap">50+ Nations</span>
+            </div>
+            <div className="glass px-2 sm:px-3 py-2 sm:py-3 rounded-lg text-[10px] sm:text-xs md:text-sm font-medium text-blue-700 flex flex-row sm:flex-col items-center gap-1 sm:gap-1 flex-shrink-0">
+              <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0" />
+              <span className="whitespace-nowrap">99% Recommended</span>
+            </div>
+            <div className="glass px-2 sm:px-3 py-2 sm:py-3 rounded-lg text-[10px] sm:text-xs md:text-sm font-medium text-blue-700 flex flex-row sm:flex-col items-center gap-1 sm:gap-1 flex-shrink-0 hidden sm:flex">
+              <Award className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0" />
+              <span className="whitespace-nowrap">Elite Program</span>
+            </div>
           </motion.div>
 
           {/* Main Headline - Responsive text sizing */}
@@ -90,7 +94,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-blue-700 leading-tight break-words px-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 text-blue-700 leading-tight break-words px-2"
           >
             Transform Your Future at{' '}
             <span className="gradient-text">UCL London</span>
@@ -101,7 +105,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 break-words"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto leading-snug px-4 break-words"
           >
             Elite Summer Career Camps for Ambitious Students | Ages 12-18
           </motion.p>
@@ -111,7 +115,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 md:mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 md:mb-12"
           >
             <Button
               size="lg"
@@ -119,7 +123,7 @@ export default function Hero() {
               className="group w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold"
             >
               Explore Programs
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <a 
               href="https://studymind.co.uk/work-experience/" 
@@ -142,9 +146,9 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-4 sm:mt-6 text-xs sm:text-sm text-gray-600 px-4"
+            className="mb-6 sm:mb-8 text-xs sm:text-sm text-gray-600 px-4"
           >
-            Use code <span className="font-bold text-red-600 bg-white px-2 sm:px-3 py-1 rounded-md border-2 border-red-600 text-xs sm:text-sm">IMPROVEME120</span> to save AED 440 (£120)
+            Use code <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded text-xs sm:text-sm">IMPROVEME120</span> to save AED 440 (£120)
           </motion.p>
         </motion.div>
 
@@ -153,7 +157,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden sm:block"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}

@@ -35,34 +35,34 @@ export default function CookieConsent() {
           transition={{ duration: 0.5 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-white shadow-2xl border-t border-gray-200"
         >
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-start gap-4 flex-1">
-                <Cookie className="w-8 h-8 text-accent-600 flex-shrink-0" />
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg text-primary-600 mb-1">
+          <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+                <Cookie className="w-6 h-6 sm:w-8 sm:h-8 text-accent-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-base sm:text-lg text-primary-600 mb-1 break-words">
                     We use cookies
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs sm:text-sm text-gray-600 break-words">
                     We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
                     By clicking "Accept All", you consent to our use of cookies.
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={declineCookies}
-                  className="whitespace-nowrap"
+                  className="whitespace-nowrap flex-1 sm:flex-none min-h-[44px] sm:min-h-0"
                 >
                   Decline
                 </Button>
                 <Button
                   size="sm"
                   onClick={acceptCookies}
-                  className="whitespace-nowrap"
+                  className="whitespace-nowrap flex-1 sm:flex-none min-h-[44px] sm:min-h-0"
                 >
                   Accept All
                 </Button>

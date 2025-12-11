@@ -45,10 +45,10 @@ export default function Stats() {
   ]
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Responsive grid: 2x2 mobile, 4 columns desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-lg lg:max-w-none mx-auto lg:mx-0">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -56,12 +56,12 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="text-center"
+              className="text-center px-2 sm:px-0"
             >
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-3 text-white">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2 md:mb-3 text-white leading-tight">
                 <Counter end={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-medium">
+              <div className="text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg text-white/90 font-medium leading-tight break-words">
                 {stat.label}
               </div>
             </motion.div>

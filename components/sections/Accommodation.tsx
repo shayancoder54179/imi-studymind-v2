@@ -24,8 +24,8 @@ export default function Accommodation() {
   ]
 
   return (
-    <section className="py-12 md:py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export default function Accommodation() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-700 mb-4">
             Your Home at UCL
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -41,7 +41,7 @@ export default function Accommodation() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
           {/* Image Gallery */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -50,12 +50,12 @@ export default function Accommodation() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-video bg-gradient-to-br from-secondary-200 to-primary-200 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="aspect-video bg-gradient-to-br from-secondary-200 to-primary-200 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
               <div className="w-full h-full flex items-center justify-center text-secondary-500">
-                <Home className="w-24 h-24 opacity-30" />
+                <Home className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-30" />
               </div>
-              <div className="absolute bottom-4 left-4 right-4 glass p-4 rounded-lg">
-                <p className="text-sm font-medium text-primary-600">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 glass p-3 sm:p-4 rounded-lg">
+                <p className="text-xs sm:text-sm font-medium text-primary-600 break-words">
                   UCL Ramsay Hall - Your Home in London
                 </p>
               </div>

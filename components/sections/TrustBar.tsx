@@ -14,7 +14,7 @@ export default function TrustBar() {
 
   return (
     <section className="py-8 sm:py-12 bg-blue-50 border-y border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,14 +30,14 @@ export default function TrustBar() {
         </motion.div>
 
         {/* Scrolling Partner Logos */}
-        <div className="relative overflow-hidden">
-          <div className="flex animate-scroll">
+        <div className="relative overflow-hidden w-full">
+          <div className="flex animate-scroll gap-4 sm:gap-8">
             {[...partners, ...partners].map((partner, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 mx-8 px-6 py-4 bg-gray-50 rounded-lg"
+                className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 rounded-lg"
               >
-                <div className="text-lg font-semibold text-gray-700 whitespace-nowrap">
+                <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-700 whitespace-nowrap">
                   {partner}
                 </div>
               </div>

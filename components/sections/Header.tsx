@@ -28,78 +28,80 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white/95 backdrop-blur-sm'
-        }`}
+        className="sticky top-0 z-50 bg-white shadow-md"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logos - Responsive sizing */}
-            <div className="flex items-center gap-1 sm:gap-2 md:gap-4 flex-shrink-0 min-w-0">
+          <div className="flex items-center justify-between py-3 sm:py-4">
+            {/* Logos - Horizontal layout with proper spacing */}
+            <div className="flex items-center gap-1 sm:gap-1.5 sm:gap-2 md:gap-3 flex-shrink-0 min-w-0 max-w-[calc(100%-60px)] sm:max-w-none overflow-hidden">
               <img 
                 src="/IMI Logo - Booklets.png" 
                 alt="Improve ME Institute Logo" 
-                className="h-6 sm:h-8 md:h-12 w-auto flex-shrink-0"
+                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[80px] sm:max-w-none"
+                loading="eager"
+                width="auto"
+                height="auto"
               />
-              <span className="text-gray-500 text-[10px] sm:text-xs md:text-sm font-medium hidden sm:inline whitespace-nowrap">
+              <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm font-normal whitespace-nowrap hidden sm:inline">
                 in collaboration with
               </span>
               <img 
                 src="/study-mind-png-long-logo.png" 
                 alt="Study Mind Logo" 
-                className="h-6 sm:h-8 md:h-12 w-auto flex-shrink-0 max-w-[100px] sm:max-w-[120px] md:max-w-none"
+                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[100px] sm:max-w-none"
+                loading="eager"
+                width="auto"
+                height="auto"
               />
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-              <button
-                onClick={() => scrollToSection('programs')}
-                className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
-              >
-                Programs
-              </button>
+            <nav className="hidden md:flex items-center gap-6">
               <button
                 onClick={() => scrollToSection('benefits')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
-                Why Us
+                Benefits
+              </button>
+              <button
+                onClick={() => scrollToSection('programs')}
+                className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
+              >
+                Pathways
               </button>
               <button
                 onClick={() => scrollToSection('experience')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
-                Experience
+                Pricing
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
-                Stories
+                Contact
               </button>
               <a 
                 href="https://studymind.co.uk/work-experience/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex flex-col items-center"
               >
-                <Button size="default" className="bg-red-600 hover:bg-red-700 text-white px-4 lg:px-6 py-2">
+                <Button size="default" className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg">
                   Apply Now
                 </Button>
-                <span className="text-xs text-gray-500 mt-1 hidden lg:block">Improve ME Institute Application</span>
               </a>
             </nav>
 
-            {/* Mobile Menu Button - Touch-friendly */}
+            {/* Mobile Menu Button - Touch-friendly, always visible */}
             <button
-              className="md:hidden p-2 w-10 h-10 flex items-center justify-center"
+              className="md:hidden p-2 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="h-6 w-6 text-gray-700" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="h-6 w-6 text-gray-700" />
               )}
             </button>
           </div>

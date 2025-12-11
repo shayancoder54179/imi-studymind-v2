@@ -35,8 +35,8 @@ export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section id="testimonials" className="py-12 md:py-20 bg-gradient-to-b from-blue-50 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-12 md:py-16 lg:py-20 bg-blue-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-700 mb-4">
             Student Success Stories
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -58,7 +58,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="glass p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-2xl"
+            className="glass p-6 rounded-2xl md:rounded-3xl shadow-2xl"
           >
             <Quote className="w-12 h-12 sm:w-16 sm:h-16 text-red-600 mb-4 md:mb-6" />
             
@@ -93,10 +93,10 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`h-3 rounded-full transition-all duration-300 ${
+                className={`h-4 w-4 md:h-3 md:w-3 rounded-full transition-all duration-300 flex items-center justify-center ${
                   index === activeIndex
-                    ? 'bg-red-600 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400 w-3'
+                    ? 'bg-red-600 w-10 md:w-8'
+                    : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`View testimonial ${index + 1}`}
               />

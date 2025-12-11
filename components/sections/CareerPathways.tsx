@@ -57,8 +57,8 @@ export default function CareerPathways() {
   ]
 
   return (
-    <section id="programs" className="py-12 md:py-20 bg-gradient-to-b from-blue-50 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="programs" className="py-12 md:py-16 lg:py-20 bg-blue-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function CareerPathways() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-700 mb-4">
             Choose Your Path
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -74,8 +74,8 @@ export default function CareerPathways() {
           </p>
         </motion.div>
 
-        {/* Responsive grid: 1 col mobile, 2 col small tablet, 3 col tablet, 4 col desktop */}
-        <div className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12">
+        {/* Responsive grid: 2 col mobile, 3 col tablet, 4 col desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
           {pathways.map((pathway, index) => {
             const Icon = pathway.icon
             return (
@@ -88,14 +88,14 @@ export default function CareerPathways() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 bg-white border-2 border-gray-200 hover:border-red-500"
               >
-                <div className="aspect-square p-4 sm:p-6 flex flex-col items-center justify-center text-center relative">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-blue-700 transition-colors duration-300 shadow-md flex-shrink-0">
-                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <div className="aspect-square p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-center relative">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center mb-2 sm:mb-3 md:mb-4 group-hover:bg-blue-700 transition-colors duration-300 shadow-md flex-shrink-0">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
                   </div>
-                  <h3 className="text-sm sm:text-lg md:text-xl font-bold text-blue-700 mb-1 sm:mb-2 group-hover:text-red-600 transition-colors duration-300 break-words">
+                  <h3 className="text-xs sm:text-base md:text-lg lg:text-xl font-bold text-blue-700 mb-1 sm:mb-2 group-hover:text-red-600 transition-colors duration-300 break-words px-0.5">
                     {pathway.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed break-words px-1">
+                  <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 leading-relaxed break-words px-0.5 sm:px-1">
                     {pathway.description}
                   </p>
                 </div>
@@ -112,7 +112,7 @@ export default function CareerPathways() {
           className="text-center"
         >
           <a href="https://studymind.co.uk/work-experience/" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" variant="default" className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold">
+            <Button size="lg" variant="default" className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-4 rounded-lg text-base sm:text-lg font-semibold min-h-[48px]">
               View All 20+ Pathways
             </Button>
           </a>

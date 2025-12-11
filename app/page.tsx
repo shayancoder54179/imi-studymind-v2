@@ -9,14 +9,13 @@ import Testimonials from '@/components/sections/Testimonials'
 import Accommodation from '@/components/sections/Accommodation'
 import Stats from '@/components/sections/Stats'
 import Video from '@/components/sections/Video'
-import SpecialOfferBanner from '@/components/sections/SpecialOfferBanner'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Footer from '@/components/sections/Footer'
 import CookieConsent from '@/components/CookieConsent'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Header />
       <Hero />
       <TrustBar />
@@ -30,7 +29,6 @@ export default function Home() {
       <Video />
       <FinalCTA />
       <Footer />
-      <SpecialOfferBanner />
       <CookieConsent />
     </main>
   )
