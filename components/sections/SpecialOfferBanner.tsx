@@ -11,7 +11,7 @@ export default function SpecialOfferBanner() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 800 && !isClosed) {
+      if (window.scrollY > 500 && !isClosed) {
         setIsVisible(true)
       }
     }
@@ -30,33 +30,45 @@ export default function SpecialOfferBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-primary-600 to-secondary-500 text-white shadow-2xl"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-red-600 text-white shadow-2xl"
         >
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3 flex-1">
-                <Tag className="w-6 h-6 flex-shrink-0" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+              {/* Text content - stacks on mobile */}
+              <div className="flex items-center gap-2 sm:gap-3 flex-1 text-center sm:text-left">
+                <Tag className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 hidden sm:block" />
                 <div className="flex-1">
-                  <p className="font-bold text-lg">
-                    Exclusive for ImproveMe Students: Save £120
+                  <p className="font-bold text-sm sm:text-base md:text-lg">
+                    Exclusive for Improve ME Institute Students: Save AED 440 (£120)
                   </p>
-                  <p className="text-sm text-white/90">
-                    Use code <span className="font-bold bg-white text-primary-600 px-2 py-0.5 rounded">IMPROVEME120</span> at checkout
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">
+                    Use code <span className="font-bold bg-white text-red-600 px-2 py-0.5 rounded">IMPROVEME120</span> at checkout
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3">
-                <a href="https://studymind.co.uk/work-experience/" target="_blank" rel="noopener noreferrer">
-                  <Button variant="secondary" size="default" className="bg-white text-primary-600 hover:bg-gray-100 border-0">
+              {/* CTA - Full width on mobile */}
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a 
+                  href="https://studymind.co.uk/work-experience/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none"
+                >
+                  <Button 
+                    variant="secondary" 
+                    size="default" 
+                    className="w-full sm:w-auto bg-white text-red-600 hover:bg-gray-100 border-0 py-2 sm:py-2 px-4 sm:px-6 text-sm sm:text-base font-semibold"
+                  >
                     Claim Offer
                   </Button>
                 </a>
                 <button
                   onClick={() => setIsClosed(true)}
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-2 w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors flex-shrink-0"
+                  aria-label="Close banner"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
             </div>

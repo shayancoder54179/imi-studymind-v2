@@ -51,11 +51,11 @@
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800;
   }
   
   .gradient-bg {
-    @apply bg-gradient-to-br from-primary-600 via-secondary-500 to-primary-600;
+    @apply bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800;
   }
 }
 

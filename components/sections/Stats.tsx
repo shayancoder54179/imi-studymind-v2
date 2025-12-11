@@ -45,9 +45,10 @@ export default function Stats() {
   ]
 
   return (
-    <section className="py-20 gradient-bg text-white">
-      <div className="container mx-auto px-4">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="py-12 md:py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Responsive grid: 2x2 mobile, 4 columns desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -57,10 +58,10 @@ export default function Stats() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="text-5xl md:text-6xl font-bold mb-3 text-accent-400">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-3 text-white">
                 <Counter end={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-lg md:text-xl text-white/90 font-medium">
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-medium">
                 {stat.label}
               </div>
             </motion.div>

@@ -465,3 +465,5 @@ studymind-x-imi/
 
 *This landing page is designed to convert, impress, and inspire. Every element serves a purpose in guiding potential students toward taking action.* 🚀
 
+
+

@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Study Mind International Summer Career Camps | UCL London',
-  description: 'Elite Summer Career Camps for ambitious UAE students aged 12-18. Experience your future career at UCL London with Study Mind and ImproveMe.',
+  title: 'Improve ME Institute International Summer Career Experience | UCL London',
+  description: 'Elite International Summer Career Experience for ambitious UAE students aged 12-18. Improve ME Institute, in collaboration with Study Mind, offers transformative career exploration at UCL London.',
   keywords: 'summer camps, career camps, UCL, London, UAE students, work experience, international education',
   icons: {
     icon: '/study mind favicon.png',
