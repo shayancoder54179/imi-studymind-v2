@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import Image from "next/image";
 
 const testimonials = [
@@ -37,20 +32,12 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="benefits" ref={ref} className="bg-white section-padding">
+    <section id="benefits" className="bg-white section-padding">
       <div className="container-custom">
         <div className="space-y-12">
           {/* Heading Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto space-y-6"
-          >
+          <div className="max-w-4xl mx-auto space-y-6">
             <div>
               <p className="text-xs sm:text-sm font-medium text-text-gray uppercase tracking-wide mb-2">
                 EXPERTS
@@ -62,16 +49,13 @@ export default function TestimonialsSection() {
                 Blending practical knowledge, industry visits and project-based learning, we offer an exceptional enrichment experience. Learning from those at the forefront of their field, students receive industry feedback and personal career coaching to prepare them for an exciting future in their chosen field.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Testimonials Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
             {testimonials.map((testimonial, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className="relative h-72 sm:h-80 md:h-96 rounded-card overflow-hidden group"
               >
                 {/* Background Image with Blur */}
@@ -80,6 +64,8 @@ export default function TestimonialsSection() {
                     src={testimonial.image}
                     alt={testimonial.name}
                     fill
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                     className="object-cover blur-sm scale-110 group-hover:scale-115 transition-transform duration-500"
                   />
                   {/* Dark Overlay */}
@@ -99,7 +85,7 @@ export default function TestimonialsSection() {
                     {testimonial.name}, {testimonial.programme}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

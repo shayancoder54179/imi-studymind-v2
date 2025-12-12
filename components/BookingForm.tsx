@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { Send, Mail, Phone, User, Calendar } from "lucide-react";
 
 const programmes = [
@@ -25,8 +22,6 @@ const programmes = [
 ];
 
 export default function BookingForm() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
     studentName: "",
     parentContact: "",
@@ -73,14 +68,9 @@ export default function BookingForm() {
   };
 
   return (
-    <section id="booking" ref={ref} className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
+    <section id="booking" className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
       <div className="container-custom max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
-        >
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <p className="text-xs sm:text-sm font-semibold text-primary-blue uppercase tracking-wide mb-2">
             BOOK YOUR PLACE
           </p>
@@ -90,14 +80,9 @@ export default function BookingForm() {
           <p className="text-base sm:text-lg text-text-gray max-w-2xl mx-auto px-4">
             Get in touch with us to book your work experience programme. Our team will respond within 24 hours.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-card shadow-card p-4 sm:p-6 md:p-8 lg:p-12"
-        >
+        <div className="bg-white rounded-card shadow-card p-4 sm:p-6 md:p-8 lg:p-12">
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
             {/* Student Name */}
             <div>
@@ -240,11 +225,9 @@ export default function BookingForm() {
             </div>
 
             {/* Submit Button */}
-            <motion.button
+            <button
               type="submit"
               disabled={isSubmitting}
-              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               className="w-full bg-primary-blue text-white px-6 sm:px-8 py-3 sm:py-3.5 md:py-4 rounded-button font-bold text-base sm:text-lg hover:bg-primary-blue-light transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
@@ -258,33 +241,25 @@ export default function BookingForm() {
                   <span>Submit Inquiry</span>
                 </>
               )}
-            </motion.button>
+            </button>
 
             {/* Success Message */}
             {submitStatus === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-green-50 border-2 border-green-200 text-green-800 px-6 py-4 rounded-lg text-center"
-              >
+              <div className="bg-green-50 border-2 border-green-200 text-green-800 px-6 py-4 rounded-lg text-center">
                 <p className="font-semibold">Thank you for your inquiry!</p>
                 <p className="text-sm mt-1">We'll get back to you within 24 hours.</p>
-              </motion.div>
+              </div>
             )}
 
             {/* Error Message */}
             {submitStatus === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-red-50 border-2 border-red-200 text-red-800 px-6 py-4 rounded-lg text-center"
-              >
+              <div className="bg-red-50 border-2 border-red-200 text-red-800 px-6 py-4 rounded-lg text-center">
                 <p className="font-semibold">Something went wrong.</p>
                 <p className="text-sm mt-1">Please try again or contact us directly.</p>
-              </motion.div>
+              </div>
             )}
           </form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

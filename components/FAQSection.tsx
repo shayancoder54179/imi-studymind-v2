@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, Building2, Heart, Brain, Plus, X } from "lucide-react";
 
 const faqCategories = [
@@ -119,9 +118,8 @@ export default function FAQSection() {
         {/* FAQ Items */}
         <div className="space-y-4">
           {filteredFaqs.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={false}
               className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden hover:border-primary-blue-light transition-colors"
             >
               <button
@@ -138,22 +136,14 @@ export default function FAQSection() {
                   <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-primary-blue flex-shrink-0" />
                 )}
               </button>
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-sm sm:text-base text-text-gray leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {openIndex === index && (
+                <div className="overflow-hidden">
+                  <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-sm sm:text-base text-text-gray leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

@@ -1,9 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Check, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 
 const safetyPoints = [
@@ -25,9 +20,6 @@ const safetyPoints = [
 ];
 
 export default function WhyStudentsLoveUsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const images = [
     {
       src: "/safety/safety1.webp",
@@ -48,16 +40,11 @@ export default function WhyStudentsLoveUsSection() {
   ];
 
   return (
-    <section id="safety" ref={ref} className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
+    <section id="safety" className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
               <p className="text-xs sm:text-sm font-medium text-text-gray uppercase tracking-wide mb-2">
                 SAFETY
@@ -71,11 +58,8 @@ export default function WhyStudentsLoveUsSection() {
               {safetyPoints.map((point, index) => {
                 const IconComponent = point.icon;
                 return (
-                  <motion.li
+                  <li
                     key={point.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
                     className="space-y-2"
                   >
                     <div className="flex items-start gap-3">
@@ -89,25 +73,17 @@ export default function WhyStudentsLoveUsSection() {
                         </p>
                       </div>
                     </div>
-                  </motion.li>
+                  </li>
                 );
               })}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Image Grid - 2x2 */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-3 sm:gap-4"
-          >
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {images.map((image, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
                 className="relative h-48 sm:h-56 md:h-64 rounded-card overflow-hidden"
               >
                 <Image
@@ -118,9 +94,9 @@ export default function WhyStudentsLoveUsSection() {
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover hover:scale-110 transition-transform duration-300"
                 />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

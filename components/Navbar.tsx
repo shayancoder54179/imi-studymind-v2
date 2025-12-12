@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const navigationLinks = [
@@ -18,143 +17,130 @@ const navigationLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (href: string, e?: React.MouseEvent) => {
-    e?.preventDefault();
-    e?.stopPropagation();
-    
-    // Close menu first for better UX
-    setIsMobileMenuOpen(false);
-    
-    // Small delay to allow menu to start closing, then scroll
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        const navbarHeight = 80; // Approximate navbar height
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navbarHeight;
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    }, 100);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMobileMenuOpen]);
+
+  const scrollToHash = (hash: string) => {
+    const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    const element = document.getElementById(id);
+    if (!element) return false;
+
+    const nav = document.querySelector<HTMLElement>("[data-navbar]");
+    const headerOffset = Math.ceil(nav?.getBoundingClientRect().height ?? 0);
+    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(0, elementTop - headerOffset),
+      behavior: "smooth",
+    });
+
+    return true;
   };
 
-  const handleBookNow = (e?: React.MouseEvent) => {
-    e?.preventDefault();
-    e?.stopPropagation();
-    
-    // Close menu first for better UX
+  const handleNavClick = (href: string) => {
+    scrollToHash(href);
     setIsMobileMenuOpen(false);
-    
-    // Small delay to allow menu to start closing, then scroll
-    setTimeout(() => {
-      const element = document.querySelector("#booking");
-      if (element) {
-        const navbarHeight = 80; // Approximate navbar height
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navbarHeight;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    }, 100);
   };
 
-  const handleLogoClick = (e?: React.MouseEvent) => {
-    e?.preventDefault();
-    e?.stopPropagation();
-    
+  const handleBookNow = () => {
+    handleNavClick("#booking");
+  };
+
+  const handleLogoClick = () => {
+    const didScroll = scrollToHash("#home");
+    if (!didScroll) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     setIsMobileMenuOpen(false);
-    
-    setTimeout(() => {
-      const element = document.querySelector("#home");
-      if (element) {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      }
-    }, 100);
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md overflow-x-hidden w-full max-w-[100vw] box-border">
-      <div className="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-6 xl:px-8 w-full max-w-full box-border overflow-x-hidden">
-        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 min-h-[56px] sm:min-h-[64px] gap-2 w-full max-w-full box-border">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md overflow-x-hidden w-full max-w-[100vw]"
+      data-navbar
+    >
+      <div className="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-6 xl:px-8 w-full">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 min-h-[56px] sm:min-h-[64px] gap-2">
           {/* Logo Section - Left */}
-          <div className="flex items-center shrink-0 min-w-0 overflow-hidden max-w-[calc(100%-80px)] sm:max-w-none box-border">
+          <div className="flex items-center flex-shrink-0 min-w-0 max-w-[calc(100%-80px)] xl:max-w-none overflow-hidden">
             <button
               onClick={handleLogoClick}
-              className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink min-w-0 max-w-full cursor-pointer hover:opacity-80 transition-opacity box-border"
+              className="flex items-center gap-1 sm:gap-2 md:gap-3 flex-shrink-0 min-w-0 cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Scroll to top"
+              type="button"
             >
               <Image
                 src="/logo/IMI Logo - Booklets.png"
                 alt="Improve ME Institute Logo"
                 width={120}
                 height={40}
-                className="h-10 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[90px] sm:max-w-[90px] md:max-w-none box-border"
+                className="h-10 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[90px] sm:max-w-[90px] md:max-w-none"
                 priority
               />
-              <div className="h-10 sm:h-9 md:h-10 lg:h-12 w-px bg-gray-400 hidden sm:block flex-shrink-0 box-border"></div>
+              <div className="h-10 sm:h-9 md:h-10 lg:h-12 w-px bg-gray-400 hidden sm:block flex-shrink-0"></div>
               <Image
                 src="/logo/study-mind-png-long-logo.png"
                 alt="Study Mind Logo"
                 width={150}
                 height={40}
-                className="h-10 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[120px] sm:max-w-[110px] md:max-w-none box-border"
+                className="h-10 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[120px] sm:max-w-[110px] md:max-w-none"
                 priority
               />
             </button>
           </div>
 
           {/* Navigation Menu - Center (Only visible on xl: 1280px+) */}
-          <div className="hidden xl:flex items-center justify-center flex-1 min-w-0 px-4 box-border overflow-x-hidden">
-            <nav className="flex items-center gap-4 max-w-full box-border" aria-label="Main navigation">
-              {navigationLinks.map((link, index) => (
-                <motion.a
+          <div className="hidden xl:flex items-center justify-center flex-1 min-w-0 px-4 overflow-x-hidden">
+            <nav className="flex items-center gap-4 max-w-full" aria-label="Main navigation">
+              {navigationLinks.map((link) => (
+                <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleNavClick(link.href, e)}
-                  className="px-2 py-2 text-gray-800 hover:text-primary-blue-dark text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap flex-shrink-0 cursor-pointer box-border max-w-full overflow-hidden"
-                  whileHover={{ y: -2 }}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
+                  className="px-2 py-2 text-gray-800 hover:text-primary-blue-dark text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap flex-shrink-0 max-w-full overflow-hidden"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-blue-dark group-hover:w-full transition-all duration-300 box-border"></span>
-                </motion.a>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-blue-dark group-hover:w-full transition-all duration-300"></span>
+                </a>
               ))}
             </nav>
           </div>
 
-          {/* Right Section - Book Now Button (Desktop) & Hamburger (Mobile) */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 box-border">
-            {/* Book Now Button - Only visible on desktop (xl+) */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => handleBookNow(e)}
-              className="hidden xl:block bg-primary-blue-dark text-white px-6 py-2.5 rounded-button font-bold text-sm hover:bg-primary-blue transition-all shadow-md whitespace-nowrap flex-shrink-0"
+          {/* Right Section - Book Now Button & Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* Book Now Button - Only visible on xl (1280px+) */}
+            <button
+              onClick={handleBookNow}
+              className="hidden xl:block bg-primary-blue-dark text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-button font-bold text-xs sm:text-sm hover:bg-primary-blue transition-all shadow-md whitespace-nowrap flex-shrink-0"
+              type="button"
             >
               Book Now
-            </motion.button>
+            </button>
 
             {/* Hamburger Menu - Only visible below xl (1280px) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="xl:hidden text-gray-700 p-2 focus:outline-none focus:ring-2 focus:ring-primary-blue rounded-lg flex-shrink-0"
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-panel"
             >
               <svg
                 className="w-6 h-6"
@@ -176,51 +162,45 @@ export default function Navbar() {
         </div>
 
         {/* Mobile/Tablet Navigation Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="xl:hidden overflow-hidden border-t border-gray-200 w-full max-w-full box-border"
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop (prevents underlying content from intercepting touches) */}
+            <div
+              className="fixed left-0 right-0 bottom-0 top-14 sm:top-16 md:top-20 bg-black/40 z-[55] xl:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Panel */}
+            <div
+              id="mobile-nav-panel"
+              className="fixed left-0 right-0 top-14 sm:top-16 md:top-20 z-[60] xl:hidden bg-white shadow-lg border-t border-gray-200 max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] md:max-h-[calc(100vh-80px)] overflow-y-auto"
             >
-              <div className="py-4 space-y-1">
-                {navigationLinks.map((link, index) => (
-                  <motion.button
+              <div className="max-w-[1920px] mx-auto px-4 sm:px-5 md:px-6 xl:px-8 py-4 space-y-1">
+                {navigationLinks.map((link) => (
+                  <button
                     key={link.href}
-                    onClick={(e) => handleNavClick(link.href, e)}
-                    className="block w-full text-left px-4 py-3 text-gray-700 hover:text-primary-blue-dark hover:bg-gray-50 active:bg-gray-100 text-sm font-medium transition-colors duration-200 rounded-lg whitespace-nowrap touch-manipulation"
-                    style={{ touchAction: 'manipulation' }}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    onClick={() => handleNavClick(link.href)}
+                    className="block w-full text-left px-4 py-3 text-gray-700 hover:text-primary-blue-dark hover:bg-gray-50 text-sm font-medium transition-colors duration-200 rounded-lg whitespace-nowrap cursor-pointer"
+                    style={{ touchAction: "manipulation" }}
+                    type="button"
                   >
                     {link.label}
-                  </motion.button>
+                  </button>
                 ))}
-                
+
                 {/* Book Now Button in Mobile Menu */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navigationLinks.length * 0.05 }}
-                  className="px-4 pt-4 mt-2 border-t border-gray-200"
+                <button
+                  onClick={handleBookNow}
+                  className="w-full mt-2 bg-primary-blue-dark text-white px-4 py-3 rounded-button font-bold text-sm hover:bg-primary-blue transition-all shadow-md whitespace-nowrap"
+                  style={{ touchAction: "manipulation" }}
+                  type="button"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={(e) => handleBookNow(e)}
-                    className="w-full bg-primary-blue-dark text-white px-6 py-3 rounded-button font-bold text-base hover:bg-primary-blue active:bg-primary-blue transition-all shadow-md touch-manipulation"
-                    style={{ touchAction: 'manipulation' }}
-                  >
-                    Book Now
-                  </motion.button>
-                </motion.div>
+                  Book Now
+                </button>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );

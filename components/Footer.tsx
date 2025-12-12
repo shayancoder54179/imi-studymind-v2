@@ -1,23 +1,14 @@
-"use client";
-
 import Image from "next/image";
 
 export default function Footer() {
-  const handleLogoClick = () => {
-    const element = document.querySelector("#home");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <footer className="bg-primary-blue-dark text-white border-t border-white/10">
       <div className="container-custom py-8 sm:py-10 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 md:gap-8 mb-6 sm:mb-7 md:mb-8">
           {/* Description */}
           <div className="self-start">
-            <button
-              onClick={handleLogoClick}
+            <a
+              href="#home"
               className="bg-white px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg flex items-center justify-center gap-2 sm:gap-3 w-fit cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Scroll to top"
             >
@@ -36,7 +27,7 @@ export default function Footer() {
                 height={40}
                 className="h-7 sm:h-8 md:h-10 w-auto object-contain flex-shrink-0"
               />
-            </button>
+            </a>
           </div>
 
           {/* Quick Links */}

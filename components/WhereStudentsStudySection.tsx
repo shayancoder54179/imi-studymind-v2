@@ -1,26 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 
 export default function WhereStudentsStudySection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="accommodation" ref={ref} className="bg-white section-padding">
+    <section id="accommodation" className="bg-white section-padding">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
+          <div className="relative">
             {/* Curved Arrow */}
             <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-8 z-10 hidden md:block">
               <svg
@@ -71,15 +58,10 @@ export default function WhereStudentsStudySection() {
             <p className="text-center text-text-gray mt-4 font-medium">
               View Location
             </p>
-          </motion.div>
+          </div>
 
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div>
               <p className="text-xs sm:text-sm font-medium text-text-gray uppercase tracking-wide mb-2">
                 ACCOMMODATION
@@ -98,21 +80,13 @@ export default function WhereStudentsStudySection() {
               </p>
             </div>
             
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              onClick={() => {
-                const element = document.querySelector("#booking");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }}
-              className="px-8 py-3 border-2 border-primary-blue text-primary-blue rounded-lg font-medium hover:bg-primary-blue hover:text-white transition-colors"
+            <a
+              href="#booking"
+              className="inline-flex px-8 py-3 border-2 border-primary-blue text-primary-blue rounded-lg font-medium hover:bg-primary-blue hover:text-white transition-colors"
             >
               Contact Us to Learn More
-            </motion.button>
-          </motion.div>
+            </a>
+          </div>
         </div>
       </div>
     </section>

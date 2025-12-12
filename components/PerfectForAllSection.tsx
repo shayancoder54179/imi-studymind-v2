@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { Star } from "lucide-react";
 import Image from "next/image";
 
@@ -14,20 +9,12 @@ const benefits = [
 ];
 
 export default function PerfectForAllSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="who-should-join" ref={ref} className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
+    <section id="who-should-join" className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
               <p className="text-xs sm:text-sm font-medium text-text-gray uppercase tracking-wide mb-2">
                 WHO IS IT FOR
@@ -38,41 +25,25 @@ export default function PerfectForAllSection() {
             </div>
             <ul className="space-y-5">
               {benefits.map((benefit, index) => (
-                <motion.li
+                <li
                   key={benefit}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
                   className="flex items-start gap-3"
                 >
                   <Star className="w-5 h-5 text-primary-blue flex-shrink-0 mt-0.5 fill-primary-blue" />
                   <span className="text-base text-text-dark leading-relaxed">{benefit}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.5 }}
-              onClick={() => {
-                const element = document.querySelector("#booking");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }}
-              className="px-8 py-3 border-2 border-primary-blue text-primary-blue rounded-lg font-medium hover:bg-primary-blue hover:text-white transition-colors"
+            <a
+              href="#booking"
+              className="inline-flex px-8 py-3 border-2 border-primary-blue text-primary-blue rounded-lg font-medium hover:bg-primary-blue hover:text-white transition-colors"
             >
               Contact Us to Learn More
-            </motion.button>
-          </motion.div>
+            </a>
+          </div>
 
           {/* Image with Testimonial Overlay */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative rounded-2xl overflow-hidden border-4 border-yellow-400 p-1">
               <div className="relative h-[400px] sm:h-[500px] md:h-[550px] lg:h-[600px] w-full rounded-xl overflow-hidden">
                 <Image
@@ -92,7 +63,7 @@ export default function PerfectForAllSection() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { Brain, Zap, Crown } from "lucide-react";
 
 const pricingTiers = [
@@ -54,11 +49,8 @@ const pricingTiers = [
 ];
 
 export default function PricingSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="fees" ref={ref} className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding relative overflow-hidden">
+    <section id="fees" className="bg-gradient-to-br from-blue-50 to-sky-50 section-padding relative overflow-hidden">
       {/* Background Grid Patterns */}
       <div className="absolute top-0 left-0 w-64 h-64 opacity-10">
         <svg width="100%" height="100%" className="text-primary-blue">
@@ -97,18 +89,15 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8 max-w-6xl mx-auto items-stretch">
           {pricingTiers.map((tier, index) => {
             const IconComponent = tier.icon;
             return (
-              <motion.div
+              <div
                 key={tier.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`relative rounded-card p-6 sm:p-7 md:p-8 shadow-md ${
+                className={`relative rounded-card p-6 sm:p-7 md:p-8 shadow-md flex flex-col h-full ${
                   tier.popular
-                    ? "bg-gradient-to-br from-primary-blue to-primary-blue-light text-white lg:scale-105"
+                    ? "bg-gradient-to-br from-primary-blue to-primary-blue-light text-white ring-2 ring-primary-blue/20"
                     : "bg-white text-text-dark"
                 }`}
               >
@@ -157,37 +146,38 @@ export default function PricingSection() {
                   </p>
                 </div>
 
-                {/* Button */}
-                <button
-                  onClick={() => {
-                    const element = document.querySelector("#booking");
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                  }}
-                  className={`w-full px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium mb-4 sm:mb-5 md:mb-6 transition-colors text-sm sm:text-base ${
-                    tier.popular
-                      ? "bg-[#2D1B4E] text-white hover:bg-[#3D2B5E]"
-                      : "bg-white border-2 border-text-gray text-text-dark hover:bg-gray-50"
-                  }`}
-                >
-                  Book Now
-                </button>
-
                 {/* Features List */}
-                <ul className="space-y-2">
+                <ul className="space-y-2 flex-1">
                   {tier.features.map((feature, idx) => (
                     <li
                       key={idx}
                       className={`text-sm ${
-                        tier.popular ? "text-white/90" : "text-text-gray"
+                        idx === 0
+                          ? tier.popular
+                            ? "text-white font-semibold"
+                            : "text-text-dark font-semibold"
+                          : tier.popular
+                            ? "text-white/90"
+                            : "text-text-gray"
                       }`}
                     >
                       {feature}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+
+                {/* Button (Pinned to bottom for alignment) */}
+                <a
+                  href="#booking"
+                  className={`w-full flex items-center justify-center text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold mt-5 sm:mt-6 transition-colors text-sm sm:text-base shadow-sm hover:shadow ${
+                    tier.popular
+                      ? "bg-white text-primary-blue hover:bg-white/90"
+                      : "bg-white border-2 border-primary-blue/30 text-primary-blue hover:bg-primary-blue/5 hover:border-primary-blue/50"
+                  }`}
+                >
+                  Book Now
+                </a>
+              </div>
             );
           })}
         </div>

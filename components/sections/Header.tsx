@@ -20,7 +20,14 @@ export default function Header() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const headerOffset = 80 // Account for sticky header height
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
       setIsMenuOpen(false)
     }
   }
@@ -46,7 +53,7 @@ export default function Header() {
               <img 
                 src="/IMI Logo - Booklets.png" 
                 alt="Improve ME Institute Logo" 
-                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[80px] sm:max-w-none"
+                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[60px] sm:max-w-[80px] md:max-w-none"
                 loading="eager"
                 width="auto"
                 height="auto"
@@ -57,7 +64,7 @@ export default function Header() {
               <img 
                 src="/study-mind-png-long-logo.png" 
                 alt="Study Mind Logo" 
-                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[100px] sm:max-w-none"
+                className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0 max-w-[70px] sm:max-w-[100px] md:max-w-none"
                 loading="eager"
                 width="auto"
                 height="auto"
@@ -73,19 +80,19 @@ export default function Header() {
                 Benefits
               </button>
               <button
-                onClick={() => scrollToSection('programs')}
+                onClick={() => scrollToSection('our-courses')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
                 Pathways
               </button>
               <button
-                onClick={() => scrollToSection('experience')}
+                onClick={() => scrollToSection('fees')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
                 Pricing
               </button>
               <button
-                onClick={() => scrollToSection('testimonials')}
+                onClick={() => scrollToSection('booking')}
                 className="text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 px-3"
               >
                 Contact
@@ -153,7 +160,7 @@ export default function Header() {
                 {/* Navigation links */}
                 <nav className="flex flex-col gap-2">
                   <button
-                    onClick={() => scrollToSection('programs')}
+                    onClick={() => scrollToSection('our-courses')}
                     className="text-left py-4 px-4 text-gray-700 hover:text-blue-700 hover:bg-blue-50 font-medium transition-colors rounded-lg text-base"
                   >
                     Programs
@@ -165,13 +172,13 @@ export default function Header() {
                     Why Us
                   </button>
                   <button
-                    onClick={() => scrollToSection('experience')}
+                    onClick={() => scrollToSection('fees')}
                     className="text-left py-4 px-4 text-gray-700 hover:text-blue-700 hover:bg-blue-50 font-medium transition-colors rounded-lg text-base"
                   >
                     Experience
                   </button>
                   <button
-                    onClick={() => scrollToSection('testimonials')}
+                    onClick={() => scrollToSection('booking')}
                     className="text-left py-4 px-4 text-gray-700 hover:text-blue-700 hover:bg-blue-50 font-medium transition-colors rounded-lg text-base"
                   >
                     Stories

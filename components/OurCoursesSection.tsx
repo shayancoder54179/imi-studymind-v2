@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import ProgrammeCard from "./ProgrammeCard";
 
@@ -145,29 +144,24 @@ export default function OurCoursesSection() {
         {/* Programme Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-8">
           {displayedProgrammes.map((programme, index) => (
-            <motion.div
+            <div
               key={programme.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
               className="h-full"
             >
               <ProgrammeCard {...programme} />
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Show All Programmes Button */}
         {hasMore && (
           <div className="text-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => setVisibleCount(filteredProgrammes.length)}
               className="px-8 py-3 bg-primary-blue text-white rounded-button font-semibold hover:bg-primary-blue-light transition-colors shadow-md hover:shadow-lg"
             >
               Show All Programmes
-            </motion.button>
+            </button>
           </div>
         )}
       </div>
