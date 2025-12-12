@@ -43,14 +43,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-5 md:px-6 xl:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 min-h-[56px] sm:min-h-[64px]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md overflow-x-hidden">
+      <div className="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-6 xl:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 min-h-[56px] sm:min-h-[64px] gap-2">
           {/* Logo Section - Left */}
-          <div className="flex items-center flex-shrink-0 min-w-0">
+          <div className="flex items-center shrink min-w-0 overflow-hidden">
             <button
               onClick={handleLogoClick}
-              className="flex items-center gap-2 md:gap-3 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+              className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink min-w-0 cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Scroll to top"
             >
               <Image
@@ -58,7 +58,7 @@ export default function Navbar() {
                 alt="Improve ME Institute Logo"
                 width={120}
                 height={40}
-                className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0"
+                className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[70px] sm:max-w-[90px] md:max-w-none"
                 priority
               />
               <div className="h-8 sm:h-9 md:h-10 lg:h-12 w-px bg-gray-400 hidden sm:block flex-shrink-0"></div>
@@ -67,7 +67,7 @@ export default function Navbar() {
                 alt="Study Mind Logo"
                 width={150}
                 height={40}
-                className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0"
+                className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain flex-shrink-0 max-w-[90px] sm:max-w-[110px] md:max-w-none"
                 priority
               />
             </button>
@@ -97,14 +97,14 @@ export default function Navbar() {
             </nav>
           </div>
 
-          {/* Right Section - Book Now Button & Hamburger */}
-          <div className="flex items-center gap-3 flex-shrink-0">
-            {/* Book Now Button */}
+          {/* Right Section - Book Now Button (Desktop) & Hamburger (Mobile) */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* Book Now Button - Only visible on desktop (xl+) */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleBookNow}
-              className="bg-primary-blue-dark text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-button font-bold text-xs sm:text-sm hover:bg-primary-blue transition-all shadow-md whitespace-nowrap flex-shrink-0"
+              className="hidden xl:block bg-primary-blue-dark text-white px-6 py-2.5 rounded-button font-bold text-sm hover:bg-primary-blue transition-all shadow-md whitespace-nowrap flex-shrink-0"
             >
               Book Now
             </motion.button>
@@ -161,6 +161,23 @@ export default function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
+                
+                {/* Book Now Button in Mobile Menu */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navigationLinks.length * 0.05 }}
+                  className="px-4 pt-4 mt-2 border-t border-gray-200"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleBookNow}
+                    className="w-full bg-primary-blue-dark text-white px-6 py-3 rounded-button font-bold text-base hover:bg-primary-blue transition-all shadow-md"
+                  >
+                    Book Now
+                  </motion.button>
+                </motion.div>
               </div>
             </motion.div>
           )}
