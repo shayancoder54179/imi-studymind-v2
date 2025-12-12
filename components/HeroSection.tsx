@@ -69,19 +69,6 @@ export default function HeroSection() {
               >
                 Book Now
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const element = document.querySelector("#booking");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }
-                }}
-                className="hidden sm:block w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 rounded-button font-bold text-base sm:text-lg md:text-xl hover:bg-white hover:text-primary-blue-dark transition-all shadow-lg hover:shadow-xl"
-              >
-                Contact Us to Learn More
-              </motion.button>
               <motion.a
                 href="https://studymind.co.uk/work-experience/"
                 target="_blank"
