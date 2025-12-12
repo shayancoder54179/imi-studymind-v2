@@ -24,10 +24,9 @@ export default function ProgrammeCard({
           src={image}
           alt={title}
           fill
-          quality={100}
+          quality={80}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover"
-          unoptimized={true}
         />
       </div>
       <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow h-full">

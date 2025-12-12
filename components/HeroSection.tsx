@@ -113,12 +113,11 @@ export default function HeroSection() {
                     src={image}
                     alt={`Student experience ${index + 1}`}
                     fill
-                    quality={100}
+                    quality={80}
                     priority={index < 3}
                     sizes="(max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     className="object-cover"
                     style={{ filter: 'blur(0.5px) brightness(0.98) contrast(0.95)' }}
-                    unoptimized={true}
                   />
                 </motion.div>
               ))}

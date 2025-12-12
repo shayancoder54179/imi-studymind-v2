@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: "Work Experience Programmes 2026 | Improve ME Institute",
@@ -13,6 +17,10 @@ export const metadata: Metadata = {
     description:
       "Experience your future career hands-on with Improve ME Institute's immersive work experience programmes, in collaboration with Study Mind UK.",
     type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

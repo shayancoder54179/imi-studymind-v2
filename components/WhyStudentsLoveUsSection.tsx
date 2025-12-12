@@ -114,10 +114,9 @@ export default function WhyStudentsLoveUsSection() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  quality={100}
+                  quality={80}
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover hover:scale-110 transition-transform duration-300"
-                  unoptimized={true}
                 />
               </motion.div>
             ))}

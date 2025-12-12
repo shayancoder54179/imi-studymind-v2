@@ -79,10 +79,9 @@ export default function PerfectForAllSection() {
                   src="/who is it for/image-31.webp"
                   alt="Students in museum with vintage airplanes"
                   fill
-                  quality={100}
+                  quality={80}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  unoptimized={true}
                 />
               </div>
               

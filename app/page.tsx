@@ -1,16 +1,39 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
-import OurCoursesSection from "@/components/OurCoursesSection";
-import BookingForm from "@/components/BookingForm";
-import PerfectForAllSection from "@/components/PerfectForAllSection";
-import WhereStudentsStudySection from "@/components/WhereStudentsStudySection";
-import WhyStudentsLoveUsSection from "@/components/WhyStudentsLoveUsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PricingSection from "@/components/PricingSection";
-import FAQSection from "@/components/FAQSection";
-import FinalCTASection from "@/components/FinalCTASection";
-import Footer from "@/components/Footer";
+
+// Lazy load below-the-fold components
+const OurCoursesSection = dynamic(() => import("@/components/OurCoursesSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const PerfectForAllSection = dynamic(() => import("@/components/PerfectForAllSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const WhereStudentsStudySection = dynamic(() => import("@/components/WhereStudentsStudySection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const WhyStudentsLoveUsSection = dynamic(() => import("@/components/WhyStudentsLoveUsSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const PricingSection = dynamic(() => import("@/components/PricingSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const FAQSection = dynamic(() => import("@/components/FAQSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const BookingForm = dynamic(() => import("@/components/BookingForm"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const FinalCTASection = dynamic(() => import("@/components/FinalCTASection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="min-h-[200px]" />,
+});
 
 export default function Home() {
   return (

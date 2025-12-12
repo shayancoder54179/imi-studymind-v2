@@ -32,11 +32,10 @@ export default function WhyChooseSection() {
               src="/why choose us/DW4A3864.JPG"
               alt="Students in professional setting"
               fill
-              quality={100}
+              quality={80}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
-              unoptimized={true}
             />
           </motion.div>
 

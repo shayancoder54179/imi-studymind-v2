@@ -54,10 +54,9 @@ export default function WhereStudentsStudySection() {
                   src="/accomodation/image-32@2x.webp"
                   alt="UCL Ramsay Hall"
                   fill
-                  quality={100}
+                  quality={80}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  unoptimized={true}
                 />
                 
                 {/* Location Pin Overlay */}

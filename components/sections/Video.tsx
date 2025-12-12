@@ -69,6 +69,8 @@ export default function Video() {
               onClick={togglePlay}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              preload="metadata"
+              playsInline
             >
               <source src="/Study Mind's Law Summer  Career Camp WC.mp4" type="video/mp4" />
               Your browser does not support the video tag.
