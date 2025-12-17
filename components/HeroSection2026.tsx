@@ -92,7 +92,7 @@ export default function HeroSection2026() {
   })) : []
 
   return (
-    <section className="relative min-h-[80vh] w-full flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[70vh] sm:min-h-[80vh] w-full flex items-center justify-center overflow-hidden">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950">
         {/* Animated gradient overlay */}
@@ -216,13 +216,13 @@ export default function HeroSection2026() {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center py-8 sm:py-0">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-[1.1] tracking-tight px-2"
         >
           <span className="text-white">2026 Work Experience</span>
           <br />
@@ -236,7 +236,7 @@ export default function HeroSection2026() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 mb-8 md:mb-10 max-w-4xl mx-auto font-light whitespace-nowrap"
+          className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-300 mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto font-light px-2 md:whitespace-nowrap"
         >
           Offered by <span className="text-white font-medium">Improve ME Institute</span> in Collaboration with <span className="text-white font-medium">Study Mind UK</span>
         </motion.p>
@@ -246,15 +246,15 @@ export default function HeroSection2026() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
         >
           <Button
             size="lg"
             onClick={() => scrollToSection('booking')}
-            className="group w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:shadow-[0_0_40px_rgba(34,211,238,0.5)] transition-all duration-300 border border-cyan-400/20"
+            className="group w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:shadow-[0_0_40px_rgba(34,211,238,0.5)] transition-all duration-300 border border-cyan-400/20"
           >
             Book Now
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           
           <a 
@@ -266,7 +266,7 @@ export default function HeroSection2026() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full px-8 py-4 rounded-xl text-lg font-semibold border-2 border-white/30 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+              className="w-full px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold border-2 border-white/30 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/50 transition-all duration-300"
             >
               Learn More
             </Button>
