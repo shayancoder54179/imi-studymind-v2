@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
+import HeroSection2026 from "@/components/HeroSection2026";
 import WhyChooseSection from "@/components/WhyChooseSection";
 
 // Lazy load below-the-fold components
@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden max-w-[100vw] w-full">
       <Navbar />
-      <HeroSection />
+      <HeroSection2026 />
       <WhyChooseSection />
       <OurCoursesSection />
       <PerfectForAllSection />
